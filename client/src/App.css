@@ -1,0 +1,118 @@
+.App {
+    text-align: center;
+}
+
+.navbar__wrapper {
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+}
+
+.navbar__logo {
+    margin-left: 38px;
+}
+
+.navbar__search {
+    display: flex;
+    align-items: center;
+    background-color: black;
+    height: 39px;
+    padding: 10px;
+}
+
+.navbar__searchContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 20px;
+    border: 1px solid #31363A;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+.navbar__searchContainer>.MuiSvgIcon-root {
+    color: gray;
+    padding: 10px;
+}
+
+.navbar__searchContainer>select {
+    border: none;
+    width: 375px;
+    margin-left: 5px;
+    margin-right: 10px;
+    background-color: black;
+    color: white;
+}
+
+.navbar__searchContainer>select:focus {
+    outline: none;
+}
+
+.navbar__menuItems {
+    margin-right: 48px;
+}
+
+.navbar__menuItems a {
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    padding: 0 10px;
+}
+
+.navbar__menuItems a:hover,
+.navbar__menuItems a:active {
+    color: #5AC53B;
+}
+
+a:first-of-type {
+    color: #5AC53B;
+}
+
+.name-dropdown {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.stock-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
