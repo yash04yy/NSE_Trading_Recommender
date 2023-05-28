@@ -1,8 +1,9 @@
 import { useEffect, useState, useMemo } from 'react';
+import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import './App.css'
 import Logo from './stocklogo.svg'
-
+import StockPredictor from './StockPredictor';
 const stonksUrl = 'http://localhost:5000/';
 
 async function getStonks(ticker) {
@@ -11,8 +12,8 @@ async function getStonks(ticker) {
 }
 
 const directionEmojis = {
-  up: '🚀',
-  down: '💩',
+  up: '↗',
+  down: '↘',
   '': '',
 };
 
@@ -140,41 +141,63 @@ function App() {
   const direction = useMemo(() => prevPrice < price ? 'up' : prevPrice > price ? 'down' : '', [prevPrice, price]);
 
   return (
-    <div>
-      <div className="navbar__wrapper">
-        <div className="navbar__logo">
-          <img src={Logo} width={55}/>
-        </div>
-        <div className="navbar__search">
-          <div className="navbar__searchContainer">   
-            <select value={selectedStock} onChange={(e) => setSelectedStock(e.target.value)} style={{ marginLeft: '10px', position: 'relative', left: '10px' }}>
-            {stockList.map((stock) => (
-              <option key={stock.ticker} value={stock.ticker}>
-                {stock.name}
-              </option>
-            ))}
-            </select>
-          </div>
-        </div>
-        <div className="navbar__menuItems">
-          <a href="/">Free Stocks</a>
-          <a href="/">PortFolio</a>
-          <a href="/">Cash</a>
-          <a href="/">Messages</a>
-          <a href="/">Account</a>
-        </div>
-      </div>
-      <div className="name-dropdown">
-        <div className='stock-name'>{stockName}</div>
-      </div>
-      <div className={['price', direction].join(' ')}>
-        ₹{price} {directionEmojis[direction]}
-      </div>
-      <div className="price-time">
-        {priceTime && priceTime.toLocaleTimeString()}
-      </div>
-      <Chart options={chart.options} series={series} type="candlestick" width="100%" height={320} />
-    </div>
+    <BrowserRouter>
+      <div>
+      <Routes>
+        <Route path="/" element={
+          <>
+            <div className="navbar__wrapper">
+              <div className="navbar__logo">
+                <img src={Logo} width={55}/>
+              </div>
+              <div className="navbar__search">
+                <div className="navbar__searchContainer">   
+                  <select value={selectedStock} onChange={(e) => setSelectedStock(e.target.value)} style={{ marginLeft: '10px', position: 'relative', left: '10px' }}>
+                  {stockList.map((stock) => (
+                    <option key={stock.ticker} value={stock.ticker}>
+                      {stock.name}
+                    </option>
+                  ))}
+                  </select>
+                </div>
+              </div>
+              <div className="navbar__menuItems">
+                  <Link to="/">Home</Link>
+                  <Link to="/stock-predictor">ML Predictions</Link>
+              </div>
+            </div>
+            <div className="name-dropdown">
+              <div className='stock-name'>{stockName}</div>
+            </div>
+            <div className={['price', direction].join(' ')}>
+              ₹{price} {directionEmojis[direction]}
+            </div>
+            <div className="price-time">
+              {priceTime && priceTime.toLocaleTimeString()}
+            </div>
+            <Chart options={chart.options} series={series} type="candlestick" width="100%" height={320} />
+          </>
+          } />
+          <Route path="/stock-predictor" element={
+            <>
+              <div className="navbar__wrapper">
+              <div className="navbar__logo">
+                <img src={Logo} width={55} alt="Logo" />
+              </div>
+
+              <div className="navbar__menuItems">
+                <Link to="/stock-predictor">ML Predictions</Link>
+                <Link to="/">Home</Link>
+              </div>
+            </div>
+          <StockPredictor />
+          </>
+        } />
+      </Routes>
+  </div>
+</BrowserRouter>
+
+
   );
 }
 

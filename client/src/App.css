@@ -64,11 +64,11 @@
 
 .navbar__menuItems a:hover,
 .navbar__menuItems a:active {
-    color: #5AC53B;
+    color: rgb(97, 97, 255);
 }
 
 a:first-of-type {
-    color: #5AC53B;
+    color: rgb(97, 97, 255);
 }
 
 .name-dropdown {
