@@ -1,8 +1,1 @@
-# TODO
-
-* [x] Find a Stock API
-<!-- * [ ] MAYBE
-  * [ ] Build a Node.js backend with socket.io -->
-* [ ] Basic Webpage
-  * [ ] Realtime Price
-  * [ ] Chart with realtime updates and historical data
+![image](https://github.com/yash04yy/NSE_Trading_Recommender/assets/67968455/ae3a4804-8201-4cee-870d-78fbc0db95c0)
